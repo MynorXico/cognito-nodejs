@@ -8,7 +8,7 @@ This project uses a simple NodeJS app to authenticate trough AWS Cognito
 
 ## Getting Started
 
-Getting up and running is as easy as 1, 2, 3.
+Getting up and running is as easy as 1, 2, 3, 4, 5.
 
 1. Make sure you have [NodeJS](https://nodejs.org/) and [npm](https://www.npmjs.com/) installed.
 2. Install your dependencies
