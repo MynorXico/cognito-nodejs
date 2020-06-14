@@ -7,9 +7,10 @@ var authMiddleWare = require('./Middleware/AuthMiddleware');
 router.post('/auth/register', authController.register);
 router.post('/auth/login', authController.login);
 router.post('/auth/validate', authController.validate_token);
+router.post('/auth/logout', authController.logout);
 
 router.get('/', (req, res) => {
-    res.send('Hello Wfrom nodejs authentication server');
+    res.sendFile("D:\\cognito-nodejs\\public\\index.html");
 });
 
 router.get('/hello', authMiddleWare.Validate, (req, res) => {

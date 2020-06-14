@@ -12,6 +12,7 @@ exports.login = function(req, res){
     let login = authService.Login(req.body, function(err, result){
         if(err)
             res.send(err)
+        res.cookie("cognito-jwt", result);
         res.send(result);
     })
 }
@@ -23,4 +24,9 @@ exports.validate_token = function(req, res){
         }
         res.send(result);
     });
+}
+
+exports.logout = function(req, res){
+    res.clearCookie('cognito-jwt');
+    res.send({});
 }

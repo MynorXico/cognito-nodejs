@@ -47,7 +47,6 @@ exports.Login = function (body, callback) {
         Pool: userPool
     }
     var cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
-
     cognitoUser.authenticateUser(authenticationDetails, {
         onSuccess: function (result) {
             var accesstoken = result.getAccessToken().getJwtToken();
