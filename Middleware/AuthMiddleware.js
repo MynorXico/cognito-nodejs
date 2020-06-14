@@ -7,7 +7,7 @@ dotenv.config();
 const pool_region = process.env.COGNITO_POOL_REGION;
 const user_pool_id = process.env.COGNITO_POOL_ID;
 exports.Validate = function (req, res, next) {
-    var token = req.cookies['cognito-jwt']  ;
+    var token = req.cookies[process.env.COGNITO_COOKIE_NAME]  ;
     request({
         url: `https://cognito-idp.${pool_region}.amazonaws.com/${user_pool_id}/.well-known/jwks.json`,
         json: true
