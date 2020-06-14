@@ -5,7 +5,7 @@ global.fetch = require('node-fetch');
 
 global.navigator = () => null;
 
-const AmazonCognitoIdentity = require('amazon-cognito-identify-js');
+const AmazonCognitoIdentity = require('amazon-cognito-identity-js');
 const { request } = require('../app');
 const poolData = {
     UserPoolId: process.env.COGNITO_POOL_ID,
@@ -38,16 +38,14 @@ exports.Register = function (body, callback) {
 exports.Login = function (body, callback) {
     var userName = body.name;
     var password = body.password;
-    var authenticationDetails = new AmazonCognitoIdentity.authenticationDetails({
+    var authenticationDetails = new AmazonCognitoIdentity.AuthenticationDetails({
         Username: userName,
         Password: password
     });
-
     var userData = {
         Username: userName,
         Pool: userPool
     }
-
     var cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
 
     cognitoUser.authenticateUser(authenticationDetails, {
@@ -81,7 +79,7 @@ exports.Validate = function (token, callback) {
 
             var decodedJwt = jwt.decode(token, { complete: true });
             if (!decodedJwt) {
-                console.log("Not a valida JWT token");
+                console.log("Not a valid a JWT token");
                 callback(new Error('Not a valida JWT token'));
             }
 
